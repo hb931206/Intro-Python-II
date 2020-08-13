@@ -59,7 +59,10 @@ while True:
 # * Prints the current description (the textwrap module might be useful here).
     print(player.current_room.description)
 # * Waits for user input and decides what to do.
-    user_input = input("Choose a direction to move in ('n', 's', 'e', 'w' ")
+    user_input = input(
+        "Choose a direction to move in ('n', 's', 'e', 'w') or press 'q' to quit ")
+    if user_input == "q":
+        break
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 
