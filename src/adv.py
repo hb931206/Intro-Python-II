@@ -62,16 +62,56 @@ while True:
     user_input = input("Choose a direction to move in ('n', 's', 'e', 'w' ")
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
+
+# Cardinal Directions for Outside
     if user_input == "n":
         if hasattr(current_room, "n_to"):
-
-            # if current_room.n_to is not None:
             player.current_room = getattr(current_room, "n_to")
-        # player.current_room = current_room.n_to
 
         else:
             pass
 
-        # Print an error message if the movement isn't allowed.
-        #
-        # If the user enters "q", quit the game.
+# Cardinal Directions for Foyer
+    if user_input == "s":
+        if hasattr(current_room, "s_to"):
+            player.current_room = getattr(current_room, "s_to")
+
+    if user_input == "n":
+        if hasattr(current_room, "n_to"):
+            player.current_room = getattr(current_room, "n_to")
+
+    if user_input == "e":
+        if hasattr(current_room, "e_to"):
+            player.current_room = getattr(current_room, "e_to")
+
+    else:
+        pass
+
+# Cardinal Directions for Overlook
+    if user_input == "s":
+        if hasattr(current_room, "s_to"):
+            player.current_room = getattr(current_room, "s_to")
+    else:
+        pass
+
+# Cardinal Directions for Narrow
+if user_input == "w":
+    if hasattr(current_room, "w_to"):
+        player.current_room = getattr(current_room, "w_to")
+
+if user_input == "n":
+    if hasattr(current_room, "n_to"):
+        player.current_room = getattr(current_room, "n_to")
+
+else:
+    pass
+# Cardinal Directions for Tresure
+if user_input == "s":
+    if hasattr(current_room, "s_to"):
+        player.current_room = getattr(current_room, "s_to")
+else:
+    pass
+
+    # Print an error message if the movement isn't allowed.
+    #
+    # If the user enters "q", quit the game.
