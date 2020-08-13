@@ -9,6 +9,3 @@ class Room:
         self.s_to: Room = None
         self.e_to: Room = None
         self.w_to: Room = None
-
-    # def __str__(self):
-    #     return f"{self.name}, {self.description}"

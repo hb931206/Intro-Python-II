@@ -1,14 +1,6 @@
 from room import Room
 from player import Player
 
-# Declare player moves
-# n_to = ["N", "n"]
-# s_to = ["S", "s"]
-# e_to = ["E", "e"]
-# w_to = ["W", "w"]
-
-# Commands
-
 
 # Declare all the rooms
 
@@ -45,25 +37,32 @@ room['treasure'].s_to = room['narrow']
 
 #
 # Main
-#
+
+wrongWay = "My gut tells me to not go over there pick another direction"
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player(room['outside'])
+
 
 # Write a loop that:
 while True:
 
     # * Prints the current room name
     current_room = player.current_room
-    print(player.current_room.name)
+    print(f"Location: {player.current_room.name} \n")
+
 # * Prints the current description (the textwrap module might be useful here).
-    print(player.current_room.description)
+    print(f"Description: {player.current_room.description} \n")
+
 # * Waits for user input and decides what to do.
     user_input = input(
         "Choose a direction to move in ('n', 's', 'e', 'w') or press 'q' to quit ")
+
+
+# If the user enters "q", quit the game.
     if user_input == "q":
         break
-#
+
 # If the user enters a cardinal direction, attempt to move to the room there.
 
 # Cardinal Directions for Outside
@@ -72,49 +71,20 @@ while True:
             player.current_room = getattr(current_room, "n_to")
 
         else:
-            pass
+            print(wrongWay)
 
 # Cardinal Directions for Foyer
-    if user_input == "s":
+    elif user_input == "s":
         if hasattr(current_room, "s_to"):
             player.current_room = getattr(current_room, "s_to")
 
-    if user_input == "n":
-        if hasattr(current_room, "n_to"):
-            player.current_room = getattr(current_room, "n_to")
+    elif user_input == "w":
+        if hasattr(current_room, "w_to"):
+            player.current_room = getattr(current_room, "w_to")
 
-    if user_input == "e":
+    elif user_input == "e":
         if hasattr(current_room, "e_to"):
             player.current_room = getattr(current_room, "e_to")
 
     else:
-        pass
-
-# Cardinal Directions for Overlook
-    if user_input == "s":
-        if hasattr(current_room, "s_to"):
-            player.current_room = getattr(current_room, "s_to")
-    else:
-        pass
-
-# Cardinal Directions for Narrow
-if user_input == "w":
-    if hasattr(current_room, "w_to"):
-        player.current_room = getattr(current_room, "w_to")
-
-if user_input == "n":
-    if hasattr(current_room, "n_to"):
-        player.current_room = getattr(current_room, "n_to")
-
-else:
-    pass
-# Cardinal Directions for Tresure
-if user_input == "s":
-    if hasattr(current_room, "s_to"):
-        player.current_room = getattr(current_room, "s_to")
-else:
-    pass
-
-    # Print an error message if the movement isn't allowed.
-    #
-    # If the user enters "q", quit the game.
+        print(wrongWay)
