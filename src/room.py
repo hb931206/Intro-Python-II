@@ -1,5 +1,8 @@
 # Implement a class to hold room information. This should have name and
 # description attributes.
+from typing import List
+from item import Item
+
 
 class Room:
     def __init__(self, name, description):
@@ -9,6 +12,7 @@ class Room:
         self.s_to: Room = None
         self.e_to: Room = None
         self.w_to: Room = None
+        self.items: List[Item] = []
 
     def compass(self, direction):
         if direction == 'n':
