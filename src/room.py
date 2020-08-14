@@ -9,3 +9,18 @@ class Room:
         self.s_to: Room = None
         self.e_to: Room = None
         self.w_to: Room = None
+
+    def compass(self, direction):
+        if direction == 'n':
+            return self.n_to
+        if direction == 's':
+            return self.s_to
+        if direction == 'e':
+            return self.e_to
+        if direction == 'w':
+            return self.w_to
+        else:
+            pass
+
+    def __str__(self):
+        return f"\nRoom: {self.name}, \nDescription: {self.description} \n"

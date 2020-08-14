@@ -38,10 +38,13 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 
-wrongWay = "My gut tells me to not go over there pick another direction"
+
+required = ['n', 's', 'e', 'w']
+invalid_entry = "Please enter a valid direction"
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player(room['outside'])
+print(f"You're outside")
 
 
 # Write a loop that:
@@ -49,42 +52,22 @@ while True:
 
     # * Prints the current room name
     current_room = player.current_room
-    print(f"Location: {player.current_room.name} \n")
+
 
 # * Prints the current description (the textwrap module might be useful here).
-    print(f"Description: {player.current_room.description} \n")
+    # print(f"Description: {player.current_room.description} \n")
 
 # * Waits for user input and decides what to do.
+
     user_input = input(
         "Choose a direction to move in ('n', 's', 'e', 'w') or press 'q' to quit ")
 
 
 # If the user enters "q", quit the game.
-    if user_input == "q":
+    if user_input in required:
+        player.player_move(user_input)
+    elif user_input in ['q']:
+        print("\nLeaving so soon?")
         break
-
-# If the user enters a cardinal direction, attempt to move to the room there.
-
-# Cardinal Directions for Outside
-    if user_input == "n":
-        if hasattr(current_room, "n_to"):
-            player.current_room = getattr(current_room, "n_to")
-
-        else:
-            print(wrongWay)
-
-# Cardinal Directions for Foyer
-    elif user_input == "s":
-        if hasattr(current_room, "s_to"):
-            player.current_room = getattr(current_room, "s_to")
-
-    elif user_input == "w":
-        if hasattr(current_room, "w_to"):
-            player.current_room = getattr(current_room, "w_to")
-
-    elif user_input == "e":
-        if hasattr(current_room, "e_to"):
-            player.current_room = getattr(current_room, "e_to")
-
     else:
-        print(wrongWay)
+        print(invalid_entry)
